@@ -53,6 +53,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Deploy to Prod Environment') {
             steps {
                 script {
@@ -63,6 +64,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Check Kubernetes Cluster') {
             steps {
                 script {
@@ -75,7 +77,6 @@ pipeline {
     }
 
     post {
-
         success {
             slackSend color: "good", message: "Build Completed: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
         }
